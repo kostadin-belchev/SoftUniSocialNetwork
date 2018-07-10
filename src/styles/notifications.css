@@ -1,0 +1,43 @@
+#notifications {
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 350px;
+    text-align: center;
+    margin: 1em;
+    max-width: 300px;
+}
+
+.notification {
+    font-size: 1.1em;
+    color: #ffffff;
+    text-align: right;
+}
+
+.notification>span {
+    display: inline-block;
+    padding:  0.5em 2em 0.5em 2em;
+    border-radius: 3px;
+}
+
+#infoBox, #errorBox, #loadingBox {
+    width: 90%;
+    margin: 10px auto;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+#loadingBox>span {
+    background: #7CB3E9;
+    padding: 1%;
+    border-radius: 3px;
+    margin: 10px auto;
+}
+#infoBox>span {
+    background: #393;
+}
+#errorBox>span {
+    background: #F50;
+}
