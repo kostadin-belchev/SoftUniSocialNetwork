@@ -39,7 +39,9 @@ class LoginForm extends Component {
               <input name='password' type='password' className='form-control' />
             </div>
             <div className='col-sm-4' />
-            <button id='btnLogin' type='submit' className='btn btn-default'>Log In</button>
+            <div className='col-sm-4'>
+              <button id='btnLogin' type='submit' className='btn btn-default'>Log In</button>
+            </div>
           </div>
         </BoundForm>
       </div>
