@@ -1,3 +1,19 @@
+Documentation from creator:
+- [Table of Contents From Creator of the App](#table-of-contents-from-creator-of-the-app)
+
+Documentation from Facebook:
+- [Table of Contents](#table-of-contents)
+
+## Table of Contents From Creator of the App
+
+- [Purpose](#purpose)
+
+## Purpose
+ The SoftUniSocialNetwork that tries its best to replace Facebook and values your privacy.
+This is React.js Fundamentals Project Assignment.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
