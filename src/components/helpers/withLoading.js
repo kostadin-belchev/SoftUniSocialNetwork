@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/notifications.css'
+// import '../styles/notifications.css'
 
 export default function withLoading (WrappedComponent) {
   return class extends React.Component {
@@ -9,7 +9,7 @@ export default function withLoading (WrappedComponent) {
     }
     componentDidMount () {
       if (this.props.reqArguments) {
-        console.log(this.props.reqArguments)
+        // console.log(this.props.reqArguments)
         let arg1Value = this.props.reqArguments.arg1
         let arg2Value = this.props.reqArguments.arg2
         this.props.request(arg1Value, arg2Value).then(data => this.receivedData(data))

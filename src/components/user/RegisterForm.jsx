@@ -3,9 +3,28 @@ import auth from '../../infrastructure/auth'
 import validateRegisterFields from '../../infrastructure/validateRegisterFields'
 import saveSession from './../../infrastructure/saveSession'
 import observer from '../../infrastructure/observer'
-import BoundForm from '../helpers/BoundForm'
+// import BoundForm from '../helpers/BoundForm'
 
 class RegisterForm extends Component {
+  constructor () {
+    super()
+
+    this.state = {
+      username: '',
+      password: '',
+      repeatPass: ''
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange (event) {
+    const fieldName = event.target.name
+    const fieldValue = event.target.value
+    this.setState({ [fieldName]: fieldValue })
+  }
+
   handleSubmit (event) {
     event.preventDefault()
     // validate register fields
@@ -21,7 +40,7 @@ class RegisterForm extends Component {
       // if register succcessful clear the entry fields
       this.setState({ username: '', password: '', repeatPass: '' })
       // redirect to catalog after successful login
-      this.props.history.push('/catalog')
+      this.props.history.push('/wall')
     }).catch((response) => {
       // trigger the observer so we can show a notification in case of unsuccessful login
       observer.trigger(observer.events.notification, { type: 'error', message: response.responseJSON.description })
@@ -30,23 +49,22 @@ class RegisterForm extends Component {
 
   render () {
     return (
-      <div className='row'>
-        <h2>Create a new account</h2>
-        <BoundForm onSubmit={this.handleSubmit}>
-          <div className='form-group'>
-            <label htmlFor='email'>Email address:</label>
-            <input type='email' className='form-control' id='email' />
-          </div>
-          <div className='form-group'>
-            <label htmlFor='pwd'>Password:</label>
-            <input type='password' className='form-control' id='pwd' />
-          </div>
-          <div className='checkbox'>
-            <label><input type='checkbox' /> Remember me</label>
-          </div>
-          <button type='submit' className='btn btn-default'>Submit</button>
-        </BoundForm>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <h2>Create new account</h2>
+        <div className='form-group'>
+          <label htmlFor='exampleInputEmail1'>Username</label>
+          <input type='text' name='username' className='form-control' aria-describedby='emailHelp' placeholder='Enter username' onChange={this.handleChange} value={this.state.username} />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='exampleInputPassword1'>Password</label>
+          <input name='password' type='password' className='form-control' placeholder='Password' onChange={this.handleChange} value={this.state.password} />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='exampleInputPassword1'>Repeat Password</label>
+          <input name='repeatPass' type='password' className='form-control' placeholder='Repeat Password' onChange={this.handleChange} value={this.state.repeatPass} />
+        </div>
+        <button type='submit' className='btn btn-primary'>Sign Up</button>
+      </form>
     )
   }
 }

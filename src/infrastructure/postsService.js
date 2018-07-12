@@ -4,25 +4,23 @@ function loadAllPosts () {
   return requester.get('appdata', 'posts', 'kinvey')
 }
 
-function createPost (author, title, url, imageUrl, description) {
+function createPost (author, title, avatarUrl, content) {
   let postObj = {
     author,
     title,
-    url,
-    imageUrl,
-    description
+    avatarUrl,
+    content
   }
 
   return requester.post('appdata', 'posts', 'kinvey', postObj)
 }
 
-function editPost (postId, author, title, url, imageUrl, description) {
+function editPost (postId, author, title, avatarUrl, content) {
   let updatedPostObj = {
     author,
     title,
-    url,
-    imageUrl,
-    description
+    avatarUrl,
+    content
   }
 
   return requester.update('appdata', `posts/${postId}`, 'kinvey', updatedPostObj)

@@ -1,4 +1,8 @@
-.post {
+.controls > a {
+    margin: 5px;
+}
+
+/* .post {
     overflow: auto;
     background: #ddf9c0;
     margin: 15px;
@@ -99,4 +103,4 @@
 
 .arrow.clicked {
     color: #ffffff;
-}
+} */

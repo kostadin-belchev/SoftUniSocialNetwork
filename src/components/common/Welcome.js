@@ -20,9 +20,10 @@ class Welcome extends Component {
               <li>Just use your username for posting and commenting.</li>
             </ul>
             <hr />
-            <LoginForm />
+            <LoginForm {...this.props} />
             <hr />
-            <RegisterForm />
+            <RegisterForm {...this.props} />
+            <hr />
           </div>
           <div className='col-sm-2 sidenav'>
             <div className='well'>

@@ -15,8 +15,10 @@ const ListItemLink = ({ to, exact, ...rest }) => (
 
 class NavigationBar extends Component {
   render () {
+    // eslint-disable-next-line
+    let username = sessionStorage.getItem('username')
     let loggedInUserContent
-    if (isUserLoggedIn) {
+    if (isUserLoggedIn()) {
       loggedInUserContent = true
     }
     return (
@@ -28,9 +30,9 @@ class NavigationBar extends Component {
               <span className='icon-bar' />
               <span className='icon-bar' />
             </button>
-            {loggedInUserContent
+            {!loggedInUserContent
               ? null
-              : <a className='navbar-brand' href='#'>S</a>
+              : <a className='navbar-brand' href='/wall'>S</a>
             }
             {/* <a className='navbar-brand' href='#'><img src={logo} alt='logo' /></a> */}
           </div>
@@ -41,7 +43,7 @@ class NavigationBar extends Component {
               <ListItemLink to='/contacts'>Contacts</ListItemLink>
             </ul>
             {/* if logged in show the below */}
-            {loggedInUserContent
+            {!loggedInUserContent
               ? null
               : (<form className='navbar-form navbar-right' role='search'>
                 <div className='form-group input-group'>
@@ -55,10 +57,12 @@ class NavigationBar extends Component {
               </form>
               )
             }
-            {loggedInUserContent
+            {!loggedInUserContent
               ? null
               : (<ul className='nav navbar-nav navbar-right'>
-                <li><a href='#'><span className='glyphicon glyphicon-user' /> My Account</a></li>
+                <ListItemLink to='/myProfile'><span className='glyphicon glyphicon-user' /> {username}</ListItemLink>
+                <ListItemLink to='/wall'>Home</ListItemLink>
+                <ListItemLink to='/logout'>Logout</ListItemLink>
               </ul>)
             }
             {/* if logged in show the above */}

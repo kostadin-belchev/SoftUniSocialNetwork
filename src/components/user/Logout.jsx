@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import auth from '../../infrastructure/auth'
 import { Redirect } from 'react-router-dom'
-import observer from '../../infrastructure/observer.js'
+import observer from '../../infrastructure/observer'
 
 class Logout extends Component {
   render () {

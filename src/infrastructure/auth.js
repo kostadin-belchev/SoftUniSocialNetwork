@@ -13,10 +13,21 @@ function login (username, password) {
 function register (username, password) {
   let userData = {
     username,
-    password
+    password,
+    avatarUrl: 'http://web.richmond.k12.va.us/portals/14/assets/images/user-avatar-placeholder.png'
   }
 
   return requester.post('user', '', 'basic', userData)
+}
+
+// get user
+function getUser (id) {
+  return requester.get('user', id, 'kinvey')
+}
+
+// update user
+function updateUser (id, data) {
+  return requester.update('user', id, 'kinvey', data)
 }
 
 // user/logout
@@ -32,5 +43,7 @@ function logout () {
 export default {
   login,
   register,
+  getUser,
+  updateUser,
   logout
 }

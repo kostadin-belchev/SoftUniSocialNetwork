@@ -2,9 +2,27 @@ import React, { Component } from 'react'
 import auth from '../../infrastructure/auth'
 import observer from '../../infrastructure/observer'
 import saveSession from './../../infrastructure/saveSession'
-import BoundForm from '../helpers/BoundForm'
+import '../../styles/site.css'
 
 class LoginForm extends Component {
+  constructor () {
+    super()
+
+    this.state = {
+      username: '',
+      password: ''
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange (event) {
+    const fieldName = event.target.name
+    const fieldValue = event.target.value
+    this.setState({ [fieldName]: fieldValue })
+  }
+
   handleSubmit (event) {
     event.preventDefault()
     // login user
@@ -16,8 +34,8 @@ class LoginForm extends Component {
       saveSession(response)
       // if login succcessful clear the entry fields
       this.setState({ username: '', password: '' })
-      // redirect to catalog after successful login
-      this.props.history.push('/catalog')
+      // redirect to postWall after successful login
+      this.props.history.push('/wall')
     }).catch((response) => {
       // trigger the observer so we can show a notification in case of unsuccessful login
       observer.trigger(observer.events.notification,
@@ -27,24 +45,16 @@ class LoginForm extends Component {
 
   render () {
     return (
-      <div className='row'>
-        <BoundForm onSubmit={this.handleSubmit} className='form-inline'>
-          <div className='row'>
-            <div className='col-sm-4'>
-              <label>Username</label>
-              <input name='username' type='text' className='form-control' />
-            </div>
-            <div className='col-sm-4'>
-              <label>Password</label>
-              <input name='password' type='password' className='form-control' />
-            </div>
-            <div className='col-sm-4' />
-            <div className='col-sm-4'>
-              <button id='btnLogin' type='submit' className='btn btn-default'>Log In</button>
-            </div>
-          </div>
-        </BoundForm>
-      </div>
+      <form className='form-inline' onSubmit={this.handleSubmit}>
+        {/* <label htmlFor='inlineFormInputName2'>Username</label> */}
+        <br />
+        <input type='text' name='username' className='form-control mb-2 mr-sm-2' placeholder='Username' onChange={this.handleChange} value={this.state.username} />
+        {/* <label htmlFor='exampleInputPassword1'>Password</label> */}
+        <div className='form-group'>
+          <input type='password' name='password' className='form-control' placeholder='Password' onChange={this.handleChange} value={this.state.password} />
+        </div>
+        <button type='submit' className='btn btn-primary mb-2'>Log In</button>
+      </form>
     )
   }
 }

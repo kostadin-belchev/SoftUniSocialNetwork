@@ -15,7 +15,7 @@ class Notification extends Component {
     this.state = DEFAULT_STATE
 
     observer.subscribe(observer.events.notification, this.showNotification.bind(this))
-    // observer.subscribe(observer.events.notification, this.hideNotification.bind(this))
+    observer.subscribe(observer.events.notificationHide, this.hideNotification.bind(this))
     this.hideNotification = this.hideNotification.bind(this)
   }
 
@@ -30,22 +30,34 @@ class Notification extends Component {
   }
 
   render () {
-    let notificationId
+    let notificationClass
+    let preMessage
     if (this.state.type === 'success') {
-      notificationId = 'infoBox'
+      notificationClass = 'alert alert-success alert-dismissible fade in'
+      preMessage = 'Success!'
       // hide notification after 3 seconds
       setTimeout(this.hideNotification, 3000)
     } else if (this.state.type === 'error') {
-      notificationId = 'errorBox'
+      notificationClass = 'alert alert-danger alert-dismissible fade in'
+      preMessage = 'Error!'
     } else if (this.state.type === 'loading') {
-      notificationId = 'loadingBox'
+      notificationClass = 'alert alert-info alert-dismissible fade in'
+      preMessage = 'Loading!'
     }
-    return (this.state.hide ? null
-      : (<div id='notifications' onClick={this.hideNotification}>
-        <div id={notificationId} className='notification'><span>{this.state.message}</span></div>
-      </div>)
+    return (this.state.hide
+      ? null
+      : (
+        <div className={notificationClass} id='notifications'>
+          <a href='' className='close' data-dismiss='alert' aria-label='close' onClick={this.hideNotification}>×</a>
+          <strong>{preMessage}</strong> <span>{this.state.message}</span>
+        </div>
+      )
     )
   }
 }
 
 export default Notification
+
+// (<div id='notifications' onClick={this.hideNotification}>
+//         <div id={notificationId} className='notification'><span>{this.state.message}</span></div>
+//       </div>)
