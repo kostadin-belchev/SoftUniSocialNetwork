@@ -31,7 +31,7 @@ function deletePost (postId) {
 }
 
 function loadOwnPosts (username) {
-  let endpoint = `posts?query={"author":"${username}"}`
+  let endpoint = `posts?query={"author":"${username}"}&sort={"_kmd.ect": -1}`
 
   return requester.get('appdata', endpoint, 'kinvey')
 }

@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom'
 import isUserLoggedIn from '../../infrastructure/isUserLoggedIn'
 // import logo from '../../logo.png'
 import '../../styles/navigation.css'
+import isUserAdminLoggedIn from '../../infrastructure/isUserAdminLoggedIn'
 
 // eslint-disable-next-line
 const ListItemLink = ({ to, exact, ...rest }) => (
@@ -63,6 +64,7 @@ class NavigationBar extends Component {
                 <ListItemLink to='/myProfile'><span className='glyphicon glyphicon-user' /> {username}</ListItemLink>
                 <ListItemLink to='/wall'>Home</ListItemLink>
                 <ListItemLink to='/logout'>Logout</ListItemLink>
+                {isUserAdminLoggedIn() ? <ListItemLink to='/adminPanel'>Admin Panel</ListItemLink> : null}
               </ul>)
             }
             {/* if logged in show the above */}

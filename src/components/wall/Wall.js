@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import PostForm from '../post/PostForm'
 import postsService from '../../infrastructure/postsService'
 import observer from '../../infrastructure/observer'
-// import WallMiddle from './WallMiddle'
+import '../../styles/wall.css'
 import PostsList from '../post/PostList'
 import auth from '../../infrastructure/auth'
 
@@ -66,10 +66,16 @@ class Wall extends Component {
 
   getPostsFromServer () {
     postsService.loadAllPosts().then((posts) => {
+      // console.log('posts from server:')
+      // console.log(posts)
       // eslint-disable-next-line
       auth.getUser(sessionStorage.getItem('userId')).then((user) => {
+        // attache onPostDelete Function to each post, here
+        for (const post of posts) {
+          post.onPostDelete = this.handlePostDelete
+        }
         this.setState({ posts, user })
-      })
+      }).catch(err => console.log(err))
     }).catch(err => console.log(err))
   }
 
@@ -107,6 +113,13 @@ class Wall extends Component {
   }
 
   render () {
+    let interests
+    if (this.state.user.interests) {
+      interests = this.state.user.interests.map((interest, index) => {
+        return <span key={index} className='label label-default'>{interest}</span>
+      })
+    }
+
     return (
       <div className='container-fluid text-center'>
         <div className='row content'>
@@ -116,16 +129,19 @@ class Wall extends Component {
                 <p><a href='/myProfile'>My Profile</a></p>
                 <img src={this.state.user.avatarUrl} className='img-circle' height={65} width={65} alt='Avatar' />
               </div>
-              <div className='well'>
+              <div id='interests-wall' className='row-sm2 well'>
                 <p><strong>Interests</strong></p>
-                {this.state.user.interests}
+                {interests}
               </div>
               <div className='alert alert-success fade in'>
                 <a href='' className='close' data-dismiss='alert' aria-label='close'>×</a>
                 <p><strong>Hey!</strong></p>
               Did you know you can update your avatar/profile picture? Go to your  <a href='/myProfile' className='alert-link'>profile page</a> to change it.
               </div>
-              <p><a href='https://softuni.bg/' target='_blank' rel='noreferrer noopener'>Link</a></p>
+              <strong>Useful links</strong>
+              <br />
+              <br />
+              <p><a href='https://softuni.bg/' target='_blank' rel='noreferrer noopener'>SoftUni</a></p>
               <p><a href='https://www.bing.com/images/discover?form=Z9LH1' target='_blank' rel='noreferrer noopener'>Bing Images Discover</a></p>
               <p><a href='https://judge.softuni.bg/' target='_blank' rel='noreferrer noopener'>SoftUni Judge</a></p>
             </div>
@@ -142,7 +158,7 @@ class Wall extends Component {
               </div>
             </div>
             {/* <WallMiddle request={postsService.loadAllPosts} /> */}
-            <PostsList posts={this.state.posts} onPostDelete={this.handlePostDelete} />
+            <PostsList posts={this.state.posts} />
           </div>
 
           <div className='col-sm-2 sidenav'>

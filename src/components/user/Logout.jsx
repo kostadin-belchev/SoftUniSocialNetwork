@@ -7,12 +7,7 @@ class Logout extends Component {
   render () {
     auth.logout().then(() => {
       // eslint-disable-next-line
-      sessionStorage.removeItem('authtoken')
-      // eslint-disable-next-line
-      sessionStorage.removeItem('userId')
-      // eslint-disable-next-line
-      sessionStorage.removeItem('username')
-      // trigger the observer so we can show a notification in case of successful logout
+      sessionStorage.clear()
       observer.trigger(observer.events.notification, { type: 'success', message: 'Logout successful.' })
     }).catch((response) => {
       // trigger the observer so we can show a notification in case of unsuccessful logout

@@ -5,12 +5,14 @@ import Post from './Post'
 class PostsList extends Component {
   render () {
     let postsNodes = this.props.posts.reverse().map((post) => {
+      // console.log('each post: ')
+      // console.log(post)
       post.isEditable = false
       // eslint-disable-next-line
       if (post._acl.creator === sessionStorage.getItem('userId')) {
         post.isEditable = true
       }
-      return (<Post key={post._id} {...post} {...this.props} />)
+      return (<Post key={post._id} {...post} />)
     })
 
     return (postsNodes)

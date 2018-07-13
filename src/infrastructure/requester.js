@@ -3,14 +3,20 @@ import $ from 'jquery'
 const kinveyBaseUrl = 'https://baas.kinvey.com/'
 const kinveyAppKey = 'kid_ryGfKcGXQ'
 const kinveyAppSecret = '919c8245fe1f47c6a3f934f7b3322ea6'
+const kinveyMasterSecret = '0c3445523dc844529981a65cd9cfc809'
 
 // Creates the authentication header
 function makeAuth (type) {
-  return type === 'basic'
+  if (type === 'basic') {
     // eslint-disable-next-line
-    ? 'Basic ' + btoa (kinveyAppKey + ':' + kinveyAppSecret)
+    return 'Basic ' + btoa (kinveyAppKey + ':' + kinveyAppSecret)
+  } else if (type === 'master') {
     // eslint-disable-next-line
-    : 'Kinvey ' + sessionStorage.getItem('authtoken')
+    return 'Basic ' + btoa (kinveyAppKey + ':' + kinveyMasterSecret)
+  } else {
+    // eslint-disable-next-line
+    return 'Kinvey ' + sessionStorage.getItem('authtoken')
+  }
 }
 
 // Creates request object to kinvey

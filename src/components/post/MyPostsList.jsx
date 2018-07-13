@@ -13,7 +13,7 @@ class MyPostsListBase extends Component {
       if (post._acl.creator === sessionStorage.getItem('userId')) {
         post.isEditable = true
       }
-      return (<Post key={post._id} rank={index} {...post} />)
+      return (<Post key={post._id} rank={index} {...post} {...this.props} />)
     })
   }
 }

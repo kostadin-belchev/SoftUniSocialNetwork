@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import observer from '../../infrastructure/observer'
 import postsService from '../../infrastructure/postsService'
+import isUserAdminLoggedIn from '../../infrastructure/isUserAdminLoggedIn'
 
 class EditPost extends Component {
   constructor (props) {
@@ -22,11 +23,13 @@ class EditPost extends Component {
   componentDidMount () {
     let postId = this.props.match.params.id
     postsService.loadPostById(postId).then((post) => {
-      // eslint-disable-next-line
-      if (post._acl.creator !== sessionStorage.getItem('userId')) {
-        // trigger the observer so we can show a notification in case of user trying to edit post that was not created by him
-        observer.trigger(observer.events.notification, { type: 'success', message: 'You can only edit your own posts' })
-        this.props.history.push('/wall')
+      if (!isUserAdminLoggedIn()) {
+        // eslint-disable-next-line
+        if (post._acl.creator !== sessionStorage.getItem('userId')) {
+          // trigger the observer so we can show a notification in case of user trying to edit post that was not created by him
+          observer.trigger(observer.events.notification, { type: 'error', message: 'You can only edit your own posts' })
+          this.props.history.push('/wall')
+        }
       }
 
       this.setState({
@@ -62,7 +65,11 @@ class EditPost extends Component {
       .then(() => {
         // trigger the observer so we can show a notification in case of successful post edit
         observer.trigger(observer.events.notification, { type: 'success', message: `Post ${this.state.form.title} updated.` })
-        this.props.history.push('/wall')
+        if (isUserAdminLoggedIn()) {
+          this.props.history.push('/adminPanel')
+        } else {
+          this.props.history.push('/wall')
+        }
       }).catch(err => console.log(err))
   }
 

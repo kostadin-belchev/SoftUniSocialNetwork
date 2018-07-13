@@ -2,6 +2,10 @@
     margin: 5px;
 }
 
+.side-of-post {
+    text-align: center;
+}
+
 /* .post {
     overflow: auto;
     background: #ddf9c0;

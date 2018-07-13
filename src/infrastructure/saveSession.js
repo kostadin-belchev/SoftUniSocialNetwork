@@ -8,7 +8,8 @@ export default function saveSession (userInfo) {
   // eslint-disable-next-line
   sessionStorage.setItem('userId', userInfo._id)
   if (userInfo._kmd.roles) {
+    // console.log(userInfo._kmd.roles)
     // eslint-disable-next-line
-  sessionStorage.setItem('userRoles', userInfo._kmd.roles)
+    sessionStorage.setItem('userRoles', JSON.stringify(userInfo._kmd.roles[0]))
   }
 }

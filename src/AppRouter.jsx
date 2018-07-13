@@ -8,6 +8,8 @@ import MyProfile from './components/user/MyProfile'
 import PostDetails from './components/post/PostDetails'
 import EditPost from './components/post/EditPost'
 import DeletePost from './components/post/DeletePost'
+import AdminPanel from './components/wall/AdminPanel'
+import { withAdminAuthorization } from './components/helpers/withAuthorization'
 
 class AppRouter extends Component {
   render () {
@@ -21,6 +23,7 @@ class AppRouter extends Component {
           <Route path='/deletePost/:id' component={DeletePost} />
           <Route path='/postDetails/:id' component={PostDetails} />
           <Route path='/editPost/:id' component={EditPost} />
+          <Route path='/adminPanel' component={withAdminAuthorization(AdminPanel)} />
           <Route component={NotFoundRoute} />
         </Switch>
       </div>

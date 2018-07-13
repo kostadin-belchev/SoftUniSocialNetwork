@@ -1,0 +1,18 @@
+.well {
+  box-sizing: border-box;
+}
+
+#interests-wall {
+  box-sizing: border-box;
+  max-height: inherit;
+  max-width: inherit;
+}
+
+#interests-wall > span {
+  display: inline-block;
+  margin: 2px;
+}
+
+.panel-body > div > span {
+  margin: 2px;
+}

@@ -27,7 +27,7 @@ class LoginForm extends Component {
     event.preventDefault()
     // login user
     auth.login(this.state.username, this.state.password).then((response) => {
-      console.log(response)
+      // console.log(response)
       // check if he is admin and if he is save it maybe in localStorage
       // trigger the observer so we can show a notification in case of successful login
       observer.trigger(observer.events.notification, { type: 'success', message: 'Login successful.' })

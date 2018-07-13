@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import '../../styles/notFoundErrorPage.css'
 
 class NotFoundRoute extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
 
     this.handleClick = this.handleClick.bind(this)
   }
