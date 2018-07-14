@@ -10,9 +10,9 @@ General documentation for React:
 
 ## Table of Contents From Creator of the App
 
+- [Getting Started](#getting-started)
 - [Purpose](#purpose)
 - [Architecture](#architecture)
-- [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
 - [Installing](#installing)
 - [Deployment](#deployment)
@@ -22,6 +22,13 @@ General documentation for React:
 - [Authors](#authors)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
+
+## Getting Started
+
+  App is already depleyed to Heroku, to visit it go to the link below:
+  [SoftUni Social Network](https://soft-uni-social-network.herokuapp.com/)
+
+  The rest of these instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ## Purpose
   The SoftUni Social Network is the social network that tries its best to replace Facebook and values your privacy. This is React.js Fundamentals Project Assignment from SoftUni course.
@@ -33,13 +40,6 @@ General documentation for React:
   In infrastructure folder we have some helper functions as as well, such as calcTime, validateRegisterFields, etc.
   Using React we have all the components in components folder.
   Components are sub-diveded in comment, common, helpers (Higher Order Components or HOCs), post, user and wall.
-
-## Getting Started
-
-  App is already depleyed to Heroku, to visit it go to the link below:
-  [SoftUni Social Network](https://vert-chaise-13919.herokuapp.com/wall)
-
-  These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
@@ -66,8 +66,9 @@ npm start
 ## Built With
 
 * [React](https://reactjs.org/) - Front End
-* [Kinvey](https://www.progress.com/kinvey) - Back End
+* [Kinvey](https://www.progress.com/kinvey) - Back End Services
 * [Bootstrap](https://getbootstrap.com/) - Responsive Design
+* [Heroku](https://www.heroku.com/) - Deployment
 
 ## Contributing
 
