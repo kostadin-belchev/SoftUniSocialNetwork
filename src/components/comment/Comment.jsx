@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import calcTime from '../../infrastructure/calcTime'
+import isUserAdminLoggedIn from '../../infrastructure/isUserAdminLoggedIn'
 
 class Comment extends Component {
   render () {
@@ -8,9 +9,13 @@ class Comment extends Component {
     let comment = this.props
     // comment.isDeletable = false
     let deleteLink
-    // eslint-disable-next-line
-    if (comment._acl.creator === sessionStorage.getItem('userId')) {
-      // comment.isDeletable = true
+    if (!isUserAdminLoggedIn()) {
+      // eslint-disable-next-line
+      if (comment._acl.creator === sessionStorage.getItem('userId')) {
+        // comment.isDeletable = true
+        deleteLink = <a onClick={(e) => this.props.onDelete(comment._id, e)} className='btn btn-primary btn-xs'>delete</a>
+      }
+    } else {
       deleteLink = <a onClick={(e) => this.props.onDelete(comment._id, e)} className='btn btn-primary btn-xs'>delete</a>
     }
     return (

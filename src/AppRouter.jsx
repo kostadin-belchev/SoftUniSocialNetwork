@@ -10,6 +10,8 @@ import EditPost from './components/post/EditPost'
 import DeletePost from './components/post/DeletePost'
 import AdminPanel from './components/wall/AdminPanel'
 import { withAdminAuthorization } from './components/helpers/withAuthorization'
+import About from './components/common/About'
+import Contacts from './components/common/Contacts'
 
 class AppRouter extends Component {
   render () {
@@ -17,6 +19,8 @@ class AppRouter extends Component {
       <div className='content'>
         <Switch>
           <Route path='/' exact component={Welcome} />
+          <Route path='/about' component={About} />
+          <Route path='/contacts' component={Contacts} />
           <Route path='/logout' component={Logout} />
           <Route path='/wall' component={Wall} />
           <Route path='/myProfile' component={MyProfile} />

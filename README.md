@@ -1,16 +1,17 @@
 # SoftUni Social Network
 
-SoftUni Social Network is the easy to use network for developers. It let's you register with only a username and password. If you wish after the initial login you can set up your profile picture and interests. The platform allows you to publish posts and then to comment on those posts. It also included an Admin panel for easier admin management of the content of the site.
+SoftUni Social Network is the easy to use network for developers. It lets you register with only a username and password. If you wish after the initial sign up you can set up your profile picture and interests. The platform allows you to publish posts and then to comment on those posts. It also included an Admin panel for easier admin management of the content of the site.
 
 Documentation from creator:
 - [Table of Contents From Creator of the App](#table-of-contents-from-creator-of-the-app)
 
-Documentation from Facebook:
+General documentation for React:
 - [Table of Contents](#table-of-contents)
 
 ## Table of Contents From Creator of the App
 
 - [Purpose](#purpose)
+- [Architecture](#architecture)
 - [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
 - [Installing](#installing)
@@ -24,6 +25,14 @@ Documentation from Facebook:
 
 ## Purpose
  The SoftUni Social Network is the social network that tries its best to replace Facebook and values your privacy. This is React.js Fundamentals Project Assignment from SoftUni course.
+
+## Architecture
+  Poject consists of public folder where the main index.html file is found from where all starts, then it is devided in sub-folders in the src main folder.
+  API calls are concentrated in infrastructure folder, and futher devided by the services they do, posts, comments, etc.
+  We have customom styles in the styles folder, addin on top of bootstrap styling.
+  In infrastructure folder we have some helper functions as as well, such as calcTime, validateRegisterFields, etc.
+  Using React we have all the components in components folder.
+  Components are sub-diveded in comment, common, helpers (Higher Order Components or HOCs), post, user and wall.
 
 ## Getting Started
 
@@ -43,14 +52,13 @@ Once you have Node.js prerequisite installed.
 ```
 npm install
 ```
-4. Once complete run start the project with the following command:
-```
-npm start
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Once install is complete start the project with the following command:
+```
+npm start
+```
 
 ## Built With
 

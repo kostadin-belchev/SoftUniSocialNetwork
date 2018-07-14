@@ -1,7 +1,8 @@
 import requester from './requester'
 
 function loadAllPosts () {
-  return requester.get('appdata', 'posts', 'kinvey')
+  let endpoint = `posts?sort={"_kmd.ect": -1}`
+  return requester.get('appdata', endpoint, 'kinvey')
 }
 
 function createPost (author, title, avatarUrl, content) {

@@ -23,6 +23,8 @@ class MyProfile extends Component {
 
     this.handleInterestChange = this.handleInterestChange.bind(this)
     this.handleInterestSubmit = this.handleInterestSubmit.bind(this)
+
+    this.deleteInterest = this.deleteInterest.bind(this)
   }
 
   componentDidMount () {
@@ -30,6 +32,25 @@ class MyProfile extends Component {
     auth.getUser(sessionStorage.getItem('userId')).then((user) => {
       this.setState({ user })
     })
+  }
+
+  deleteInterest (index) {
+    let interests = this.state.user.interests
+    interests.splice(index, 1)
+    let newUserData = {
+      // eslint-disable-next-line
+      "avatarUrl": this.state.user.avatarUrl,
+      // eslint-disable-next-line
+      "interests": interests
+    }
+    auth.updateUser(this.state.user._id, newUserData).then((user) => {
+      // console.log('response from handleAvatarUrlSubmit AFTER update of USER: ')
+      // console.log(user)
+      observer.trigger(observer.events.notification, { type: 'success', message: 'Interest removed!' })
+      this.setState({ user })
+      // console.log('state from handleAvatarUrlSubmit AFTER update of state: ')
+      // console.log(this.state)
+    }).catch(console.log)
   }
 
   handleAvatarUrlSubmit (event) {
@@ -101,7 +122,7 @@ class MyProfile extends Component {
     let interests
     if (this.state.user.interests) {
       interests = this.state.user.interests.map((interest, index) => {
-        return <span key={index} className='label label-default'>{interest}</span>
+        return <span key={index} className='label label-default' onClick={(e) => this.deleteInterest(index, e)} >{interest}</span>
       })
     }
 
@@ -110,6 +131,7 @@ class MyProfile extends Component {
         <div className='row content'>
           <div className='col-sm-3 sidenav'>
             <div className='well'>
+
               <div className='panel-group' id='accordion'>
                 <div className='panel panel-default'>
                   <div className='panel-heading'>
@@ -122,6 +144,11 @@ class MyProfile extends Component {
                       <div className='well'>
                         <p><strong>{this.state.user.username}</strong></p>
                         <img src={this.state.user.avatarUrl} className='img-circle' height={65} width={65} alt='Avatar' />
+                        <div className='panel-body'>
+                          <div>
+                            {interests}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -173,6 +200,7 @@ class MyProfile extends Component {
                   </div>
                   <div id='collapse4' className='panel-collapse collapse'>
                     <div className='panel-body'>
+                      <p>Click on interest to removed it</p>
                       <div>
                         {interests}
                       </div>

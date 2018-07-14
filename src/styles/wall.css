@@ -15,4 +15,5 @@
 
 .panel-body > div > span {
   margin: 2px;
+  display: inline-block;
 }

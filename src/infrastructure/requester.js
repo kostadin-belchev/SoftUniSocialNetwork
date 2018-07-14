@@ -42,6 +42,12 @@ function post (module, endpoint, auth, data) {
   return $.ajax(req)
 }
 
+// Function to return POST promise
+function restoreUser (module, endpoint, auth) {
+  let req = makeRequest('POST', module, endpoint, auth)
+  return $.ajax(req)
+}
+
 // Function to return PUT promise
 function update (module, endpoint, auth, data) {
   let req = makeRequest('PUT', module, endpoint, auth)
@@ -54,9 +60,22 @@ function remove (module, endpoint, auth) {
   return $.ajax(makeRequest('DELETE', module, endpoint, auth))
 }
 
+function deleteUser (endpoint) {
+  return $.ajax({
+    method: 'DELETE',
+    url: kinveyBaseUrl + 'user/' + kinveyAppKey + '/' + endpoint,
+    headers: {
+      'Authorization': makeAuth('kinvey'),
+      'X-Kinvey-API-Version': 2
+    }
+  })
+}
+
 export default {
   get,
   post,
   update,
-  remove
+  remove,
+  deleteUser,
+  restoreUser
 }

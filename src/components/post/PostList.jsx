@@ -3,8 +3,9 @@ import Post from './Post'
 // import withLoading from './../../infrastructure/withLoading'
 
 class PostsList extends Component {
+  // reverse deleted
   render () {
-    let postsNodes = this.props.posts.reverse().map((post) => {
+    let postsNodes = this.props.posts.map((post) => {
       // console.log('each post: ')
       // console.log(post)
       post.isEditable = false

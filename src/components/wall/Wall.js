@@ -93,7 +93,9 @@ class Wall extends Component {
     if (index > -1) {
       posts.splice(index, 1)
     }
-    let newPosts = posts.reverse()
+    // let newPosts = posts.reverse()
+    let newPosts = posts
+
     this.setState({ posts: newPosts })
     // just for faster UI notifications
     // observer.trigger(observer.events.notification, { type: 'success', message: 'Post deleted.' })
