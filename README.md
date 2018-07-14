@@ -36,6 +36,9 @@ General documentation for React:
 
 ## Getting Started
 
+  App is already depleyed to Heroku, to visit it go to the link below:
+  [SoftUni Social Network](https://vert-chaise-13919.herokuapp.com/wall)
+  
   These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
