@@ -24,7 +24,7 @@ General documentation for React:
 - [Acknowledgments](#acknowledgments)
 
 ## Purpose
- The SoftUni Social Network is the social network that tries its best to replace Facebook and values your privacy. This is React.js Fundamentals Project Assignment from SoftUni course.
+  The SoftUni Social Network is the social network that tries its best to replace Facebook and values your privacy. This is React.js Fundamentals Project Assignment from SoftUni course.
 
 ## Architecture
   Poject consists of public folder where the main index.html file is found from where all starts, then it is devided in sub-folders in the src main folder.
@@ -38,7 +38,7 @@ General documentation for React:
 
   App is already depleyed to Heroku, to visit it go to the link below:
   [SoftUni Social Network](https://vert-chaise-13919.herokuapp.com/wall)
-  
+
   These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
