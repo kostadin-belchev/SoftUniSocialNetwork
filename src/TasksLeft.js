@@ -5,6 +5,5 @@
 
 Bonus
 •	Public project defense presentation
-•	Deploy the application in a cloud environment, Heroku
 •	Use a file storage cloud API, e.g. Dropbox, Google Drive or other for storing the files
 •	Use of features of HTML 5 like Geolocation, Local Storage, SVG, Canvas, etc.

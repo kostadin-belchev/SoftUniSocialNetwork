@@ -44,7 +44,7 @@ class NavigationBar extends Component {
               <ListItemLink to='/contacts'>Contacts</ListItemLink>
             </ul>
             {/* if logged in show the below */}
-            {!loggedInUserContent
+            {/* {!loggedInUserContent
               ? null
               : (<form className='navbar-form navbar-right' role='search'>
                 <div className='form-group input-group'>
@@ -57,7 +57,7 @@ class NavigationBar extends Component {
                 </div>
               </form>
               )
-            }
+            } */}
             {!loggedInUserContent
               ? null
               : (<ul className='nav navbar-nav navbar-right'>
