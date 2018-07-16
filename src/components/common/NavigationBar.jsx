@@ -4,6 +4,7 @@ import isUserLoggedIn from '../../infrastructure/isUserLoggedIn'
 // import logo from '../../logo.png'
 import '../../styles/navigation.css'
 import isUserAdminLoggedIn from '../../infrastructure/isUserAdminLoggedIn'
+import observer from '../../infrastructure/observer'
 
 // eslint-disable-next-line
 const ListItemLink = ({ to, exact, ...rest }) => (
@@ -15,6 +16,21 @@ const ListItemLink = ({ to, exact, ...rest }) => (
 )
 
 class NavigationBar extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      loggedOut: false
+    }
+
+    this.updateState = this.updateState.bind(this)
+    observer.subscribe(observer.events.loggedOut, this.updateState)
+  }
+
+  updateState () {
+    this.setState({ loggedOut: true })
+  }
+
   render () {
     // eslint-disable-next-line
     let username = sessionStorage.getItem('username')
@@ -67,6 +83,7 @@ class NavigationBar extends Component {
                 {isUserAdminLoggedIn() ? <ListItemLink to='/adminPanel'>Admin Panel</ListItemLink> : null}
               </ul>)
             }
+            {this.state.loggedOut ? null : null}
             {/* if logged in show the above */}
           </div>
         </div>

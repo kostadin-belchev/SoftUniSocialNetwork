@@ -25,6 +25,16 @@ class LoginForm extends Component {
 
   handleSubmit (event) {
     event.preventDefault()
+    if (this.state.username === '') {
+      observer.trigger(observer.events.notification,
+        { type: 'error', message: 'Username cannot be empty!' })
+      return
+    }
+    if (this.state.password === '') {
+      observer.trigger(observer.events.notification,
+        { type: 'error', message: 'Password cannot be empty!' })
+      return
+    }
     // login user
     auth.login(this.state.username, this.state.password).then((response) => {
       // console.log(response)

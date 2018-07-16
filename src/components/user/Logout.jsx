@@ -9,6 +9,7 @@ class Logout extends Component {
       // eslint-disable-next-line
       sessionStorage.clear()
       observer.trigger(observer.events.notification, { type: 'success', message: 'Logout successful.' })
+      observer.trigger(observer.events.loggedOut)
     }).catch((response) => {
       // trigger the observer so we can show a notification in case of unsuccessful logout
       observer.trigger(observer.events.notification,
