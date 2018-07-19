@@ -1,0 +1,15 @@
+Improvements for next update
+1. Avatar pictures and iterests showing in each post
+
+Bonus
+•	Public project defense presentation
+•	Use a file storage cloud API, e.g. Dropbox, Google Drive or other for storing the files
+•	Use of features of HTML 5 like Geolocation, Local Storage, SVG, Canvas, etc.
+
+Things to mention:
+1. Custom ListItemLink HOC for NavigationBar component
+2. Kinvey bannedUsers collection
+3. Custom 404 Not Found page
+4. Google maps API integration on Contacts page
+5. HOC for authorization using Kinvey
+6. Notification component using observer pattern
